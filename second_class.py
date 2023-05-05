@@ -1,20 +1,34 @@
-class Solider: #通常第一個字大寫
+class SoliderInfo:
+    def __init__(self):
+        self.hp = 0
+        self.attack = 0
 
-    def __init__(self, setHp, setAttack):
-        self.hp = setHp
-        self.attack = setAttack
+class Weapon:
+    def __init__(self):
+        self.name = "no"
+
+class Solider: 
+    def __init__(self, setSoliderInfo, setWeapon):
+        self.soliderInfo = setSoliderInfo #self.都小寫
+        self.weapon = setWeapon
     
     def beat(self, power):
-        self.hp -= power #self.hp=self.hp-power
-    
-    def is_a_live(self): #*如果方法沒有需要使用變數，不用召喚
-        if self.hp>0:
-            return True
-        return False #精簡寫法
+        self.soliderInfo.hp -= power 
 
-soilder1 = Solider(10,5)
+    def get_weapon_name(self):
+        return self.weapon.name
 
-soilder1.beat(11)
-print(soilder1.hp)
-fin=soilder1.is_a_live() #*上面沒召喚下面不用填
-print(fin)
+
+soliderInfo1 = SoliderInfo()
+soliderInfo1.attack = 10
+soliderInfo1.hp = 8
+
+arrow= Weapon()
+arrow.name = "ARROW"
+
+solider1 = Solider(soliderInfo1,arrow)
+
+solider1.beat(11)
+print(solider1.soliderInfo.hp)
+print(solider1.get_weapon_name())
+print(solider1.weapon.name)
