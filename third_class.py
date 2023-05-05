@@ -8,7 +8,6 @@ class Solider: #父
 
 class Archer(Solider): #子(繼承父的method-->beaten)
     def attack_by_arch(self):
-
         return self.attack
 
 class Healer(Solider): #子
@@ -16,10 +15,10 @@ class Healer(Solider): #子
         self.hp+=5
         return self.hp
     
-    def heal_other(self,setArcher):
-        self.archer=setArcher
-        self.archer.hp+=3
-        return self.archer.hp
+    def heal_solider(self,name):
+        self.name=name
+        self.name.hp+=3
+        return self.name.hp
     
 alex = Archer(11,24)
 print(alex.attack_by_arch())
@@ -29,5 +28,5 @@ print(alex.hp)
 angel = Healer(11,20)
 angel.beaten(10)
 print(angel.heal_myself())
-print(angel.heal_other(alex))
+print(angel.heal_solider(alex))
 print(alex.hp) #double check
